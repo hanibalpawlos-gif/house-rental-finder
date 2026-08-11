@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Rental Finder</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+    }
+
+    header {
+      background: #1683ff;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .search {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #ccc;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background: #1683ff;
+      color: white;
+      border: none;
+      font-weight: bold;
+    }
+
+    .house {
+      background: white;
+      margin: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #ccc;
+    }
+
+    .house h2 {
+      color: #1683ff;
+    }
+
+    .contact {
+      background: #20a84b;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🏠 House Rental Finder</h1>
+  <p>Find your next home easily</p>
+</header>
+
+<div class="search">
+  <h2>Find a House</h2>
+
+  <input type="text" placeholder="Enter location">
+
+  <select>
+    <option>Choose house type</option>
+    <option>Single Room</option>
+    <option>One Bedroom</option>
+    <option>Two Bedroom</option>
+    <option>Three Bedroom</option>
+  </select>
+
+  <input type="number" placeholder="Maximum monthly rent">
+
+  <button>Search Houses</button>
+</div>
+
+<div class="house">
+  <h2>🏠 Beautiful 2 Bedroom House</h2>
+  <p>📍 Kampala</p>
+  <p>💰 Rent: 500,000 UGX/month</p>
+  <p>🚿 Water available</p>
+  <p>⚡ Electricity available</p>
+
+  <a class="contact" href="tel:+256000000000">
+    📞 Contact Owner
+  </a>
+</div>
+
+<div class="house">
+  <h2>🏠 One Bedroom House</h2>
+  <p>📍 Kampala</p>
+  <p>💰 Rent: 300,000 UGX/month</p>
+  <p>🚿 Water available</p>
+
+  <a class="contact" href="tel:+256000000000">
+    📞 Contact Owner
+  </a>
+</div>
+
+</body>
+</html>
