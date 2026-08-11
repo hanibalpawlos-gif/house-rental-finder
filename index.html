@@ -1,124 +1,794 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>House Rental Finder</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #f4f6f8;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
+    body {
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    /* HEADER */
+
     header {
-      background: #1683ff;
+      background: #123c69;
       color: white;
-      padding: 25px 15px;
+      padding: 20px;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
+      font-size: 28px;
+      margin-bottom: 8px;
     }
 
-    .search {
-      background: white;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px #ccc;
+    header p {
+      font-size: 15px;
     }
 
-    input, select, button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 10px;
-      box-sizing: border-box;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
+    /* HERO */
 
-    button {
-      background: #1683ff;
+    .hero {
+      background: #123c69;
       color: white;
-      border: none;
-      font-weight: bold;
+      padding: 45px 20px;
+      text-align: center;
     }
 
-    .house {
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      margin-bottom: 25px;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      max-width: 900px;
+      margin: auto;
       background: white;
-      margin: 20px;
       padding: 15px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px #ccc;
+      display: grid;
+      gap: 10px;
     }
 
-    .house h2 {
-      color: #1683ff;
+    .search-box input,
+    .search-box select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
     }
 
-    .contact {
-      background: #20a84b;
+    .search-btn {
+      background: #f4a261;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* MAIN */
+
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    /* HOUSE CARDS */
+
+    .houses {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(270px, 1fr)
+      );
+
+      gap: 22px;
+    }
+
+    .house-card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .house-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .house-info {
+      padding: 18px;
+    }
+
+    .house-info h3 {
+      margin-bottom: 10px;
+    }
+
+    .location {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #123c69;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .details {
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .contact-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #25D366;
       color: white;
       padding: 12px;
       border-radius: 8px;
-      text-align: center;
-      display: block;
       text-decoration: none;
-      margin-top: 10px;
+      font-weight: bold;
     }
+
+    /* LANDLORD SECTION */
+
+    .post-section {
+      background: white;
+      margin-top: 40px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .post-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .post-section p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    /* FORM */
+
+    #houseForm {
+      max-width: 600px;
+      margin: 25px auto 0;
+      display: grid;
+      gap: 12px;
+      text-align: left;
+    }
+
+    #houseForm input,
+    #houseForm select,
+    #houseForm textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    #houseForm textarea {
+      resize: vertical;
+    }
+
+    #houseForm button {
+      border: none;
+      cursor: pointer;
+    }
+
+    .post-btn {
+      display: inline-block;
+      background: #123c69;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #formMessage {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #123c69;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 5px;
+    }
+
+    /* DESKTOP SEARCH */
+
+    @media (min-width: 700px) {
+
+      .search-box {
+        grid-template-columns:
+          1fr
+          1fr
+          1fr
+          auto;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
 
-<header>
-  <h1>🏠 House Rental Finder</h1>
-  <p>Find your next home easily</p>
-</header>
+  <!-- HEADER -->
 
-<div class="search">
-  <h2>Find a House</h2>
+  <header>
 
-  <input type="text" placeholder="Enter location">
+    <h1>🏠 House Rental Finder</h1>
 
-  <select>
-    <option>Choose house type</option>
-    <option>Single Room</option>
-    <option>One Bedroom</option>
-    <option>Two Bedroom</option>
-    <option>Three Bedroom</option>
-  </select>
+    <p>
+      Find your next home easily
+    </p>
 
-  <input type="number" placeholder="Maximum monthly rent">
+  </header>
 
-  <button>Search Houses</button>
-</div>
 
-<div class="house">
-  <h2>🏠 Beautiful 2 Bedroom House</h2>
-  <p>📍 Kampala</p>
-  <p>💰 Rent: 500,000 UGX/month</p>
-  <p>🚿 Water available</p>
-  <p>⚡ Electricity available</p>
+  <!-- HERO / SEARCH -->
 
-  <a class="contact" href="tel:+256000000000">
-    📞 Contact Owner
-  </a>
-</div>
+  <section class="hero">
 
-<div class="house">
-  <h2>🏠 One Bedroom House</h2>
-  <p>📍 Kampala</p>
-  <p>💰 Rent: 300,000 UGX/month</p>
-  <p>🚿 Water available</p>
+    <h2>
+      Find Your Next Home
+    </h2>
 
-  <a class="contact" href="tel:+256000000000">
-    📞 Contact Owner
-  </a>
-</div>
+    <p>
+      Search rental houses around your area.
+    </p>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="location"
+        placeholder="📍 Location"
+      >
+
+
+      <select id="bedrooms">
+
+        <option value="">
+          Bedrooms
+        </option>
+
+        <option value="1">
+          1 Bedroom
+        </option>
+
+        <option value="2">
+          2 Bedrooms
+        </option>
+
+        <option value="3">
+          3 Bedrooms
+        </option>
+
+        <option value="4">
+          4+ Bedrooms
+        </option>
+
+      </select>
+
+
+      <input
+        type="number"
+        id="maxPrice"
+        placeholder="💰 Maximum rent"
+      >
+
+
+      <button
+        class="search-btn"
+        onclick="searchHouses()"
+      >
+
+        🔎 Search
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOUSES -->
+
+  <main class="container">
+
+    <div class="section-title">
+
+      <h2>
+        Available Houses
+      </h2>
+
+      <p>
+        Find a house that fits your budget.
+      </p>
+
+    </div>
+
+
+    <div
+      class="houses"
+      id="houseList"
+    >
+
+
+      <!-- HOUSE 1 -->
+
+      <div
+        class="house-card"
+        data-location="Kampala"
+        data-bedrooms="2"
+        data-price="800000"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80"
+          alt="Modern rental house"
+        >
+
+
+        <div class="house-info">
+
+          <h3>
+            Modern 2 Bedroom House
+          </h3>
+
+          <p class="location">
+            📍 Kampala
+          </p>
+
+          <p class="price">
+            UGX 800,000 / month
+          </p>
+
+          <p class="details">
+            🛏️ 2 Bedrooms • 🚿 2 Bathrooms
+          </p>
+
+
+          <a
+            class="contact-btn"
+            href="https://wa.me/256700000000"
+            target="_blank"
+          >
+
+            💬 Contact Owner
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- HOUSE 2 -->
+
+      <div
+        class="house-card"
+        data-location="Kira"
+        data-bedrooms="1"
+        data-price="500000"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"
+          alt="One bedroom rental"
+        >
+
+
+        <div class="house-info">
+
+          <h3>
+            Affordable 1 Bedroom
+          </h3>
+
+          <p class="location">
+            📍 Kira
+          </p>
+
+          <p class="price">
+            UGX 500,000 / month
+          </p>
+
+          <p class="details">
+            🛏️ 1 Bedroom • 🚿 1 Bathroom
+          </p>
+
+
+          <a
+            class="contact-btn"
+            href="https://wa.me/256700000000"
+            target="_blank"
+          >
+
+            💬 Contact Owner
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- HOUSE 3 -->
+
+      <div
+        class="house-card"
+        data-location="Ntinda"
+        data-bedrooms="3"
+        data-price="1200000"
+      >
+
+        <img
+          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+          alt="Three bedroom rental"
+        >
+
+
+        <div class="house-info">
+
+          <h3>
+            Spacious 3 Bedroom Home
+          </h3>
+
+          <p class="location">
+            📍 Ntinda
+          </p>
+
+          <p class="price">
+            UGX 1,200,000 / month
+          </p>
+
+          <p class="details">
+            🛏️ 3 Bedrooms • 🚿 2 Bathrooms
+          </p>
+
+
+          <a
+            class="contact-btn"
+            href="https://wa.me/256700000000"
+            target="_blank"
+          >
+
+            💬 Contact Owner
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- LANDLORD FORM -->
+
+  <section
+    class="post-section"
+    id="postHouse"
+  >
+
+    <h2>
+      🏠 List Your House
+    </h2>
+
+    <p>
+      Are you a landlord?
+      Add your property to House Rental Finder.
+    </p>
+
+
+    <form id="houseForm">
+
+
+      <input
+        type="text"
+        id="ownerName"
+        placeholder="Owner name"
+        required
+      >
+
+
+      <input
+        type="tel"
+        id="phone"
+        placeholder="WhatsApp number e.g. 2567XXXXXXXX"
+        required
+      >
+
+
+      <input
+        type="text"
+        id="houseLocation"
+        placeholder="House location"
+        required
+      >
+
+
+      <input
+        type="number"
+        id="rent"
+        placeholder="Monthly rent in UGX"
+        required
+      >
+
+
+      <select
+        id="houseBedrooms"
+        required
+      >
+
+        <option value="">
+          Number of bedrooms
+        </option>
+
+        <option value="1">
+          1 Bedroom
+        </option>
+
+        <option value="2">
+          2 Bedrooms
+        </option>
+
+        <option value="3">
+          3 Bedrooms
+        </option>
+
+        <option value="4">
+          4+ Bedrooms
+        </option>
+
+      </select>
+
+
+      <textarea
+        id="description"
+        placeholder="Describe your house..."
+        rows="5"
+        required
+      ></textarea>
+
+
+      <input
+        type="url"
+        id="image"
+        placeholder="House image URL"
+      >
+
+
+      <button
+        type="submit"
+        class="post-btn"
+      >
+
+        ➕ Submit Property
+
+      </button>
+
+
+    </form>
+
+
+    <p id="formMessage"></p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 House Rental Finder
+    </p>
+
+    <p>
+      Connecting tenants with property owners
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+
+    /* SEARCH */
+
+    function searchHouses() {
+
+      const location =
+        document
+        .getElementById("location")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+      const bedrooms =
+        document
+        .getElementById("bedrooms")
+        .value;
+
+
+      const maxPrice =
+        document
+        .getElementById("maxPrice")
+        .value;
+
+
+      const houses =
+        document.querySelectorAll(
+          ".house-card"
+        );
+
+
+      houses.forEach(function(house) {
+
+        const houseLocation =
+          house.dataset.location
+          .toLowerCase();
+
+
+        const houseBedrooms =
+          house.dataset.bedrooms;
+
+
+        const housePrice =
+          Number(
+            house.dataset.price
+          );
+
+
+        let show = true;
+
+
+        if (
+          location &&
+          !houseLocation.includes(location)
+        ) {
+
+          show = false;
+
+        }
+
+
+        if (
+          bedrooms &&
+          houseBedrooms !== bedrooms
+        ) {
+
+          show = false;
+
+        }
+
+
+        if (
+          maxPrice &&
+          housePrice > Number(maxPrice)
+        ) {
+
+          show = false;
+
+        }
+
+
+        house.style.display =
+          show ? "block" : "none";
+
+      });
+
+    }
+
+
+
+    /* LANDLORD FORM */
+
+    document
+      .getElementById("houseForm")
+      .addEventListener(
+        "submit",
+        function(event) {
+
+          event.preventDefault();
+
+
+          const ownerName =
+            document
+            .getElementById("ownerName")
+            .value;
+
+
+          const location =
+            document
+            .getElementById("houseLocation")
+            .value;
+
+
+          const rent =
+            document
+            .getElementById("rent")
+            .value;
+
+
+          document
+            .getElementById("formMessage")
+            .textContent =
+            "✅ Thank you " +
+            ownerName +
+            "! Your property in " +
+            location +
+            " has been received. Rent: UGX " +
+            Number(rent).toLocaleString();
+
+
+          document
+            .getElementById("houseForm")
+            .reset();
+
+        }
+
+      );
+
+
+  </script>
+
 
 </body>
 </html>
