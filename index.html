@@ -789,9 +789,11 @@
 
   </script>
 
-<script type="module">
+
   // Import the functions you need from the SDKs you need
   <script type="module">
+
+  // Firebase imports
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
   import {
@@ -800,25 +802,46 @@
     addDoc,
     getDocs
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  // Your web app's Firebase configuration
+
+
+  // Your Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyB5qq9fBMsIdq7Ja8PqaZ19wc8T_1ZTz1k",
-    authDomain: "house-rental-finder-9866b.firebaseapp.com",
-    projectId: "house-rental-finder-9866b",
-    storageBucket: "house-rental-finder-9866b.firebasestorage.app",
-    messagingSenderId: "543666341756",
-    appId: "1:543666341756:web:910c39d9254f0e6c2406f9"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
+
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+
+  // Connect to Firestore
   const db = getFirestore(app);
- await addDoc(collection(db, "posts"), {
-  location: location,
-  price: price
-}); 
-  
+
+
+  // Example function for saving a house
+  async function saveHouse(location, price) {
+
+    try {
+
+      const docRef = await addDoc(collection(db, "posts"), {
+        location: location,
+        price: price,
+        createdAt: new Date()
+      });
+
+      console.log("House saved successfully!");
+      console.log("Document ID:", docRef.id);
+
+    } catch (error) {
+
+      console.error("Error saving house:", error);
+
+    }
+
+  }
+
 </script>
-</script>
-</body>
-</html>
