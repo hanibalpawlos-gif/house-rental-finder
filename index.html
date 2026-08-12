@@ -813,6 +813,11 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+ await addDoc(collection(db, "posts"), {
+  location: location,
+  price: price
+}); 
+  
 </script>
 </script>
 </body>
