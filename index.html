@@ -791,57 +791,71 @@
 
 
   // Import the functions you need from the SDKs you need
-  <script type="module">
+<script type="module">
 
-  // Firebase imports
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
+// YOUR FIREBASE CONFIG
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-  // Connect to Firestore
-  const db = getFirestore(app);
+// START FIREBASE
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
-  // Example function for saving a house
-  async function saveHouse(location, price) {
+// SUBMIT PROPERTY
+const houseForm = document.getElementById("houseForm");
 
-    try {
+houseForm.addEventListener("submit", async (event) => {
 
-      const docRef = await addDoc(collection(db, "posts"), {
-        location: location,
-        price: price,
-        createdAt: new Date()
-      });
+  event.preventDefault();
 
-      console.log("House saved successfully!");
-      console.log("Document ID:", docRef.id);
+  const ownerName = document.getElementById("ownerName").value;
+  const houseLocation = document.getElementById("location").value;
+  const rent = document.getElementById("rent").value;
+  const image = document.getElementById("image").value;
 
-    } catch (error) {
+  try {
 
-      console.error("Error saving house:", error);
+    await addDoc(collection(db, "posts"), {
 
-    }
+      ownerName: ownerName,
+      location: houseLocation,
+      rent: Number(rent),
+      image: image,
+      createdAt: new Date()
+
+    });
+
+    document.getElementById("formMessage").textContent =
+      "Property submitted successfully!";
+
+    houseForm.reset();
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById("formMessage").textContent =
+      "Error submitting property.";
 
   }
+
+});
 
 </script>
